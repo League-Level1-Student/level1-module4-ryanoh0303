@@ -21,7 +21,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 public class FortuneTeller extends JPanel implements Runnable, MouseListener {
-
+	  AudioClip sound = JApplet.newAudioClip(getClass().getResource("creepy-noise.wav"));
     JFrame frame = new JFrame();
 
     int frameWidth = 500;
@@ -31,8 +31,14 @@ public class FortuneTeller extends JPanel implements Runnable, MouseListener {
    	 // 1. Choose an image for your fortune teller and put it in your default package
    	 fortuneTellerImage = ImageIO.read(getClass().getResource("fortune teller.png"));
    	 // 2. Adjust the frameWidth and frameHeight variables to fit your image nicely (doesn’t need a new line of code)
+   	 
+   	 
+   	 
+   	 
+   	 
      // 3. Complete the begin() method in the FortuneTellerRunner class
  	 // 4. add a mouse listener to the frame
+   	 frame.addMouseListener(this);
 
     }
 
@@ -43,22 +49,43 @@ public class FortuneTeller extends JPanel implements Runnable, MouseListener {
    	 int mouseX = e.getX();
    	 int mouseY = e.getY();
    	 // 5. Print the mouseX variable
-
+      System.out.print(mouseX);
    	 // 6. Add the mouseY variable to the previous line so that it prints out too (no new line)
+      System.out.println(mouseY);
    	 // 7. Adjust your secret location co-ordinates here:
-   	 int secretLocationX = 0;
-   	 int secretLocationY = 0;
+   	 int secretLocationX = 300;
+   	 int secretLocationY = 300;
    	 /** If the mouse co-ordinates and secret location are close, we'll let them ask a question. */
    	 if (areClose(mouseX, secretLocationX) && areClose(mouseY, secretLocationY)) {
    		 // 8. Get the user to enter a question for the fortune teller
+   		 String question= JOptionPane.showInputDialog("What is your question?");
 
    		 // 9. Find a spooky sound and put it in your default package (freesound.org)
-   		 // AudioClip sound = JApplet.newAudioClip(getClass().getResource("creepy-noise.wav"));
+   		
    		 // 10. Play the sound
-
+    sound.play();
    		 // 11. Use the pause() method below to wait until your music has finished
-
-   		 // 12. Insert your completed Magic 8 ball code here
+  pause(5);
+  
+  
+  // 12. Insert your completed Magic 8 ball code here
+  Random rand= new Random();
+	
+	int randomnumber=rand.nextInt(4);
+	System.out.println(randomnumber);
+	
+	if(randomnumber==0) {
+		JOptionPane.showMessageDialog(null,"Yes");
+	}
+	else if(randomnumber==1) {
+		JOptionPane.showMessageDialog(null, "No");
+	}
+	else if(randomnumber==2) {
+		JOptionPane.showMessageDialog(null, "Maybe you should ask Google?");
+	}
+	else if(randomnumber==3) {
+		JOptionPane.showMessageDialog(null,"I do not know");
+	}
 
    	 }
 

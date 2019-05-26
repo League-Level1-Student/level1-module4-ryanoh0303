@@ -1,4 +1,5 @@
 package _07_fortune_teller;
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
 /*
@@ -14,6 +15,8 @@ public class FortuneTellerRunner {
     
     static void begin() {
       	 // Welcome the user. Give them a hint for the secret location.
+      JOptionPane.showMessageDialog(null, "Welcome User!");
+      System.out.println("HINT: THE SECRET LOCATION IS NEAR THE MIDDLE OF THE IMAGE");
 
     }
 }
